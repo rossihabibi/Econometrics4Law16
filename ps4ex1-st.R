@@ -1,28 +1,37 @@
 rm(list = ls())
 
-getwd()
-#setwd("/Users/rossi/Dropbox/Econometrics4Law16")
-
 library(AER)
 library(foreign) 
-
-options(digits = 2)
 
 download.file('http://fmwww.bc.edu/ec-p/data/wooldridge/wage2.dta', 'data/wage2.dta', mode="wb")
 wage2 <- read.dta("data/wage2.dta")
 
 ## 1
+lm(formula = lwage ~ educ, data = wage2) 
+summary(m0) 
+
 m0 <- lm(formula = lwage ~ educ, data = wage2) 
 s_m0 <- summary(m0) 
 
+print(m0)
+print(s_m0)
+
+# What's the difference between assign and print?
+# What's the object m0
+# What's the object s_m0
+
 upperbound <-  (s_m0$coefficients[2,1] + 1.96*s_m0$coefficients[2,2])*100
 lowerbound <-  (s_m0$coefficients[2,1] - 1.96*s_m0$coefficients[2,2])*100
+
+# Now compute a 95 % confidence interval for the intercept. Hint : understand what s_m0 is, what the dollar sign $ does, and what s_m0$coefficients is.
 
 
 ## 2
 iv1 <- ivreg(lwage ~ educ | sibs, data = wage2)
 s_iv1 <- summary(iv1)
 
+print(iv1)
+print(s_iv1)
 
 ## 3
 iv4stage1 <- lm(educ ~ brthord, data = wage2)
