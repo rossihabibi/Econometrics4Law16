@@ -1,4 +1,4 @@
-# Econometrics4Law16
+# Econometrics Éco-Droit Fall 2016
 
 In R from https://www.r-project.org/
-Using RStudio from https://www.rstudio.com/
+\n Using RStudio from https://www.rstudio.com/
