@@ -18,12 +18,18 @@ print(s_m0)
 
 # What's the difference between assign and print?
 # What's the object m0
+class(m0)
+m0$coefficients
 # What's the object s_m0
+class(s_m0)
+s_m0$coefficients
 
 upperbound <-  (s_m0$coefficients[2,1] + 1.96*s_m0$coefficients[2,2])*100
 lowerbound <-  (s_m0$coefficients[2,1] - 1.96*s_m0$coefficients[2,2])*100
 
 # Now compute a 95 % confidence interval for the intercept. Hint : understand what s_m0 is, what the dollar sign $ does, and what s_m0$coefficients is.
+
+confint(m0)
 
 
 ## 2
@@ -53,8 +59,7 @@ s_iv6stage1 <- summary(iv6stage1)
 iv6 <- ivreg(lwage ~ educ + sibs | brthord + sibs, data = wage2)
 s_iv6 <- summary(iv6)
 
-upperbound6 <- (s_iv6$coefficients[2,1] + 1.96*s_iv6$coefficients[2,2])*100
-lowerbound6 <- (s_iv6$coefficients[2,1] - 1.96*s_iv6$coefficients[2,2])*100
+confint(iv6)
 
 ## 7 
 index.omitted <- as.numeric(iv6stage1$na.action)
